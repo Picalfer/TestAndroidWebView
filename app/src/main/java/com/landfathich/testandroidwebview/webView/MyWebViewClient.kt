@@ -1,6 +1,7 @@
 package com.landfathich.testandroidwebview.webView
 
 import android.graphics.Bitmap
+import android.util.Log
 import android.view.View
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
@@ -13,6 +14,11 @@ class MyWebViewClient : WebViewClient() {
 
     override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
         view.loadUrl(request.url.toString())
+        Log.d("TEST", request.url.toString())
+        val id = request.url.toString().substringAfter("id=").substringBefore("&uuid")
+        val uuid = request.url.toString().substringAfter("uuid=")
+        Log.d("TEST ID", id)
+        Log.d("TEST UUID", uuid)
         return true
     }
 
