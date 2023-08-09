@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TestAndroidWebView</string>
+    <string name="main_btn_text">Загрузить</string>
 </resources>
