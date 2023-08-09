@@ -8,6 +8,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ProgressBar
 import android.widget.TextView
+import com.landfathich.testandroidwebview.Constants
 import com.landfathich.testandroidwebview.MainActivity
 import com.landfathich.testandroidwebview.R
 
@@ -27,8 +28,10 @@ class MyWebViewClient : WebViewClient() {
             val textView = context.findViewById<TextView>(R.id.tv_info)
             textView.visibility = View.VISIBLE
             textView.text = "id = $id \nuuid = $uuid"
-        }
 
+            context.appPreferences?.putStringValue(Constants.ID, id)
+            context.appPreferences?.putStringValue(Constants.UUID, uuid)
+        }
         return true
     }
 
@@ -36,7 +39,9 @@ class MyWebViewClient : WebViewClient() {
         super.onPageFinished(view, url)
         val context = view.context as MainActivity
         val progressBar = context.findViewById<ProgressBar>(R.id.progress_bar)
+        val tvInfoStart = context.findViewById<TextView>(R.id.tv_info_start)
         progressBar.visibility = View.GONE
+        tvInfoStart.visibility = View.GONE
     }
 
     override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
