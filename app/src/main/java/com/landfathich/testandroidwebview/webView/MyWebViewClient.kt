@@ -31,6 +31,9 @@ class MyWebViewClient : WebViewClient() {
 
             context.appPreferences?.putStringValue(Constants.ID, id)
             context.appPreferences?.putStringValue(Constants.UUID, uuid)
+
+            val progressBar = context.findViewById<ProgressBar>(R.id.progress_bar)
+            progressBar.visibility = View.GONE
         }
         return true
     }
@@ -38,9 +41,7 @@ class MyWebViewClient : WebViewClient() {
     override fun onPageFinished(view: WebView, url: String) {
         super.onPageFinished(view, url)
         val context = view.context as MainActivity
-        val progressBar = context.findViewById<ProgressBar>(R.id.progress_bar)
         val tvInfoStart = context.findViewById<TextView>(R.id.tv_info_start)
-        progressBar.visibility = View.GONE
         tvInfoStart.visibility = View.GONE
     }
 

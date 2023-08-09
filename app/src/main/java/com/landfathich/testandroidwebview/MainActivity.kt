@@ -19,7 +19,9 @@ class MainActivity : AppCompatActivity() {
         appPreferences = AppPreferences(this)
 
         binding.apply {
-            if (appPreferences?.getStringValue(Constants.ID) != null && appPreferences?.getStringValue(Constants.UUID) != null) {
+            if (appPreferences?.getStringValue(Constants.ID) != null &&
+                appPreferences?.getStringValue(Constants.UUID) != null
+            ) {
                 tvInfoStart.visibility = View.VISIBLE
                 val id = appPreferences?.getStringValue(Constants.ID)
                 val uuid = appPreferences?.getStringValue(Constants.UUID)
